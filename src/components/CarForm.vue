@@ -93,7 +93,6 @@ export default {
         try {
           const newId = await carsService.createCar(state.newCar)
           // NOTE clears the form
-          debugger
           state.newCar = {}
           router.push({name: 'CarDetails', params: {id: newId}})
         } catch (error) {
@@ -104,7 +103,6 @@ export default {
   }
 }
 </script>
-
 
 <style lang="scss" scoped>
 </style>

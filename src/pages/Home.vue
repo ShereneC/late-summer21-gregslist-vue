@@ -1,10 +1,20 @@
 <template>
   <div class="home container-fluid">
+    
     <div class="row">
       <div class="col">
         <CarForm />
         <HouseForm />
+        <JobForm />
       </div>
+          <div class="row mt-4 container-fluid text-center">
+      <h3>Jobs for Hire</h3>
+          </div>
+    </div>
+    <div class="row">
+      <div class="col-4" v-for="j in jobs" :key="j.id">
+        <JobCard :job="j"/>
+    </div>
     </div>
         <div class="row mt-4 container-fluid text-center">
       <h3>Houses for Sale</h3>
@@ -34,8 +44,11 @@ import { computed, onMounted } from '@vue/runtime-core'
 import {AppState} from '../AppState.js'
 import {carsService } from '../services/CarsService'
 import {housesService} from '../services/HousesService'
+import {jobsService} from '../services/JobsService'
 import CarCard from '../components/CarCard.vue'
 import CarForm from '../components/CarForm.vue'
+import JobCard from '../components/JobCard.vue'
+import JobForm from '../components/JobForm.vue'
 import HouseCard from '../components/HouseCard.vue'
 import HouseForm from '../components/HouseForm.vue'
 
@@ -49,6 +62,7 @@ export default {
       try {
         await carsService.getCars()
         await housesService.getHouses()
+        await jobsService.getJobs()
       } catch (error) {
         console.error(error)
       }
@@ -57,7 +71,8 @@ export default {
       // state,
       // computeds
       cars: computed(() => AppState.cars),
-      houses: computed(()=> AppState.houses)
+      houses: computed(()=> AppState.houses),
+      jobs: computed(()=> AppState.jobs)
       // methods
     }
   },
@@ -65,7 +80,9 @@ export default {
     CarCard,
     CarForm,
     HouseCard,
-    HouseForm
+    HouseForm,
+    JobCard,
+    JobForm
   }
 }
 </script>

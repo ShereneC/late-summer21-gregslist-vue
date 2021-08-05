@@ -1,14 +1,14 @@
 <template>
       <div class="house m-2 bg-light shadow">
         <!-- passing required param ':id' -->
-        <!-- <router-link :to="{name: 'HouseDetails', params: {id: house.id}}"> -->
+        <router-link :to="{name: 'HouseDetails', params: {id: house.id}}">
           <img :src="house.imgUrl" class="w-100" :alt="house.description">
           <div class="p-3">
               <div class="text-center">
                   <p><b>{{house.year}} - {{house.price}}</b></p>
               </div>
           </div>
-        <!-- </router-link> -->
+        </router-link>
       </div>
 </template>
 

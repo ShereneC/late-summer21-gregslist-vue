@@ -27,6 +27,19 @@
           max="20"
         />
       </div>
+       <div class="form-group">
+        <label for="year">Levels</label>
+        <input
+          type="number"
+          name="levels"
+          v-model="state.newHouse.levels"
+          class="form-control"
+          placeholder="Levels..."
+          required
+          min="1"
+          max="20"
+        />
+      </div>
       <div class="form-group">
         <label for="year">Bathrooms</label>
         <input
